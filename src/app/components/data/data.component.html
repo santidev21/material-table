@@ -1,0 +1,3 @@
+<div *ngFor="let dataSource of InventoryData; let i = index" class="table-container">
+    <app-table-container [dataSource]="dataSource" [isEditing]="isEditing" [originalData]="originalData[i]"></app-table-container>
+</div>

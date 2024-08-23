@@ -1,0 +1,21 @@
+<div class="button-container">
+    <ng-container *ngIf="!isEditing; else editButtons">
+        <button type="button" (click)="toggleEditMode(true)">
+            <mat-icon aria-hidden="false" fontIcon="edit">edit</mat-icon>
+            Edit
+            </button>
+    </ng-container>
+    <ng-template #editButtons>
+        <button type="button" (click)="cancelChanges()">
+            <mat-icon aria-hidden="false" fontIcon="cancel">cancel</mat-icon>
+            Cancel
+            </button>
+            
+            <button type="button" (click)="saveChanges()">
+            <mat-icon aria-hidden="false" fontIcon="check_circle">check_circle</mat-icon>
+            Save
+            </button>
+    </ng-template>
+</div>
+
+

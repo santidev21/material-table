@@ -1,0 +1,85 @@
+<table mat-table [dataSource]="formArray.controls" class="mat-elevation-z8">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let control">
+      <ng-container [formGroup]="control">
+        <ng-container *ngIf="isEditing; else viewName">
+          <input matInput formControlName="name">
+        </ng-container>
+        <ng-template #viewName>
+          <span>{{ control.get('name').value }}</span>
+        </ng-template>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Address Column -->
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef> Address </th>
+    <td mat-cell *matCellDef="let control">
+      <ng-container [formGroup]="control">
+        <ng-container *ngIf="isEditing; else viewAddress">
+          <input matInput formControlName="address">
+        </ng-container>
+        <ng-template #viewAddress>
+          <span>{{ control.get('address').value }}</span>
+        </ng-template>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let control">
+      <ng-container [formGroup]="control">
+        <ng-container *ngIf="isEditing; else viewStatus">
+          <mat-checkbox formControlName="status"></mat-checkbox>
+        </ng-container>
+        <ng-template #viewStatus>
+          <span>{{ control.get('status').value ? 'Active' : 'Inactive' }}</span>
+        </ng-template>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Type Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let control">
+      <ng-container [formGroup]="control">
+        <ng-container *ngIf="isEditing; else viewType">
+          <mat-form-field>
+            <mat-select formControlName="type">
+              <mat-option value="Warehouse">Warehouse</mat-option>
+              <mat-option value="Lot">Lot</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+        <ng-template #viewType>
+          <span>{{ control.get('type').value }}</span>
+        </ng-template>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Manager Column -->
+  <ng-container matColumnDef="manager">
+    <th mat-header-cell *matHeaderCellDef> Manager </th>
+    <td mat-cell *matCellDef="let control">
+      <ng-container [formGroup]="control">
+        <ng-container *ngIf="isEditing; else viewManager">
+          <input matInput formControlName="manager">
+        </ng-container>
+        <ng-template #viewManager>
+          <span>{{ control.get('manager').value }}</span>
+        </ng-template>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
